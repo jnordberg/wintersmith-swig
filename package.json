@@ -1,0 +1,11 @@
+{
+  "name": "wintersmith-swig",
+  "version": "0.1.0",
+  "author": "Johan Nordberg <its@johan-nordberg.com>",
+  "description": "swig plugin for witnersmith",
+  "license": "MIT",
+  "dependencies": {
+    "swig": ">= 0.0.1",
+    "coffee-script": "1.2.x"
+  }
+}
