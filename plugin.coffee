@@ -15,8 +15,13 @@ module.exports = (wintersmith, callback) ->
       catch error
         callback error
 
-  SwigTemplate.fromFile = (filename, callback) ->
-    fs.readFile filename, (error, contents) ->
+  firstCompile = true
+  SwigTemplate.fromFile = (filename, base, callback) ->
+    if firstCompile
+      swig.init
+        root: base
+      firstCompile = false
+    fs.readFile path.join(base, filename), (error, contents) ->
       if error then callback error
       else
         try
