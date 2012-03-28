@@ -20,6 +20,7 @@ module.exports = (wintersmith, callback) ->
     if firstCompile
       swig.init
         root: base
+        autoescape: false
       firstCompile = false
     fs.readFile path.join(base, filename), (error, contents) ->
       if error then callback error
