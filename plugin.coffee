@@ -3,9 +3,9 @@ swig = require 'swig'
 path = require 'path'
 fs = require 'fs'
 
-module.exports = (wintersmith, callback) ->
+module.exports = (env, callback) ->
 
-  class SwigTemplate extends wintersmith.TemplatePlugin
+  class SwigTemplate extends env.TemplatePlugin
 
     constructor: (@tpl) ->
 
@@ -16,19 +16,20 @@ module.exports = (wintersmith, callback) ->
         callback error
 
   firstCompile = true
-  SwigTemplate.fromFile = (filename, base, callback) ->
+  SwigTemplate.fromFile = (filepath, callback) ->
+    console.log env.templatesPath
     if firstCompile
       swig.init
-        root: base
+        root: env.templatesPath
       firstCompile = false
-    fs.readFile path.join(base, filename), (error, contents) ->
+    fs.readFile filepath.full, (error, contents) ->
       if error then callback error
       else
         try
-          tpl = swig.compile contents.toString(), filename
+          tpl = swig.compile contents.toString(), filepath.relative
           callback null, new SwigTemplate tpl
         catch error
           callback error
 
-  wintersmith.registerTemplatePlugin '**/*.html', SwigTemplate
+  env.registerTemplatePlugin '**/*.html', SwigTemplate
   callback()
