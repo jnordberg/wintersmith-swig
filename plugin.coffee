@@ -21,6 +21,7 @@ module.exports = (env, callback) ->
     if firstCompile
       swig.init
         root: env.templatesPath
+        cache: false
       firstCompile = false
     fs.readFile filepath.full, (error, contents) ->
       if error then callback error
