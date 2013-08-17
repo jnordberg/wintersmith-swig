@@ -17,7 +17,6 @@ module.exports = (env, callback) ->
 
   firstCompile = true
   SwigTemplate.fromFile = (filepath, callback) ->
-    console.log env.templatesPath
     if firstCompile
       swig.init
         root: env.templatesPath
