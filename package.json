@@ -1,6 +1,6 @@
 {
   "name": "wintersmith-swig",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": "Johan Nordberg <its@johan-nordberg.com>",
   "description": "swig plugin for witnersmith",
   "license": "MIT",
