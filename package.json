@@ -1,6 +1,6 @@
 {
   "name": "wintersmith-swig",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "author": "Johan Nordberg <its@johan-nordberg.com>",
   "description": "swig plugin for witnersmith",
   "license": "MIT",
@@ -10,7 +10,7 @@
     "swig"
   ],
   "dependencies": {
-    "swig": "0.14.x",
-    "coffee-script": ">=1.6"
+    "coffee-script": ">=1.6",
+    "swig": "^1.4.2"
   }
 }

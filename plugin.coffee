@@ -18,15 +18,16 @@ module.exports = (env, callback) ->
   firstCompile = true
   SwigTemplate.fromFile = (filepath, callback) ->
     if firstCompile
-      swig.init
-        root: env.templatesPath
+      swig.setDefaults
+        loader: swig.loaders.fs(env.templatesPath)
         cache: false
       firstCompile = false
     fs.readFile filepath.full, (error, contents) ->
       if error then callback error
       else
         try
-          tpl = swig.compile contents.toString(), filepath.relative
+          tpl = swig.compile contents.toString(),
+            filename: filepath.relative
           callback null, new SwigTemplate tpl
         catch error
           callback error
